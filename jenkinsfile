@@ -1,0 +1,27 @@
+pipeline{
+  agent any
+  options{
+    buildDiscarder(logRotator(numToKeepStr: '2'))
+    disableConcurrentBuilds()
+  }
+  
+  stages{
+    stage('stage1'){
+      steps{
+        sh 'echo stage1'
+      }
+    }
+    
+    stage('printfile'){
+      steps{
+        sh 'cat sbc.txt'
+      }
+    }
+    
+    stage('stage2'){
+      steps{
+      sh 'echo stage2'
+      }
+    }
+  }
+}
